@@ -1,0 +1,163 @@
+/*this is the pseudocode for CIS 3207 Project 2
+last edied by Yanfei Li at 10/3/2021
+*/
+
+//built-in commands---------------------------------
+cd(directory)
+{
+    change current directory to <directory>;
+};
+clr()
+{
+    clear the screen;
+};
+dir(directory)
+{
+    list contents of directory <directory>;
+};
+environ()
+{
+    list all environment variables;
+};
+echo(comment)
+{
+    display <comment> on the display;
+};
+help()
+{
+    display user manual;
+};
+pause()
+{
+    pause the shell until ‘Enter’ is pressed;
+};
+quit()
+{
+    quit the shell;
+};
+
+
+
+//external commands-------------------------------------
+fork()
+{
+    duplicating the calling process;
+}
+
+setPipes() {
+    set the pipe;
+}
+
+getPipes() {
+    return Pipe;
+}
+
+
+Process_pipe(Param) {
+	//process a pipe;
+	fork();
+	process pipe;
+}
+
+Process_background(Param) {
+    fork();
+	process in background;
+}
+
+
+setRedirects() {
+    set the direction;
+}
+
+getRedirects(param) {
+    return Redirect;
+}
+
+Process_redirect(Param) {
+    open file;   
+    fork();
+	process redirect;
+	exec() command;
+
+}
+
+//-----------------------------------------------------
+int main(int argc, char *argv[])
+{
+    if(argc==1)
+    {
+        standard_mode();//run shell in standard mode
+    }
+    else
+    {
+        batch_mode(argv[1]);//run shell in batch mode
+    }
+}
+//------------------------------------------------------
+
+
+standard_mode()
+{
+    print prompt;
+    get user_inputs;
+
+    while(user_inputs!="quit")
+    {
+        switch (user_inputs)
+        {
+            case cd:
+                cd();
+            case clr:
+                clr();
+            case dir:
+                dir();
+            case environ:
+                environ();
+            case echo:
+                echo();
+            case help:
+                hel();
+            case pause:
+                pause();
+            case quit:
+                quit();
+            default :
+                break;
+        }
+        
+    }
+}
+
+batch_mode()
+{
+    switch (user_input)
+    {
+            case cd:
+                cd();
+            case clr:
+                clr();
+            case dir:
+                dir();
+            case environ:
+                environ();
+            case echo:
+                echo();
+            case help:
+                hel();
+            case pause:
+                pause();
+            case quit:
+                quit();
+            default :
+                break;
+}
+
+
+/*
+the testing plan:
+1. test all the built-in commands with stander_mode
+2. test all the built-in commands with batch_mode
+3. test all the external commands with stander_mode
+4. test all the external commands with batch_mode
+5. test all the commands in the both modes with arbitrary inputs
+*/
